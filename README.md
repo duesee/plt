@@ -4,10 +4,10 @@ A simple tool to parse the TLS/MLS presentation language for research and learni
 
 # Usage
 
-Currently, this tool generates a dependency graph of all `structs` and `enums` defined in a given `<file>` and output the graph in either [GML] or [GV] format.
+Currently, this tool generates a dependency graph of all `structs` and `enums` defined in a given `<file>` and outputs a graph in either [GML] or [GV] format.
 
 ```sh
-plt <file> [gml|gv]'
+plt <file> [gml|gv]
 ```
 
 You can try this out by running ...
@@ -16,7 +16,7 @@ You can try this out by running ...
 cargo run -- assets/draft-ietf-mls-protocol.tls
 ```
 
-... and using a GML viewer such as [yEd]. (Don't forget to click on auto-layout.)
+... and using a GML viewer such as [yEd]. (Don't forget to apply an auto-layout.)
 
 Note: This tool is not really tested and might produce invalid GML/GV output. Use at your own risk!
 
