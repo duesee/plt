@@ -18,7 +18,71 @@ cargo run -- assets/draft-ietf-mls-protocol.tls
 
 ... and using a GML viewer such as [yEd]. (Don't forget to apply an auto-layout.)
 
+But it already parses all of MLS' syntax.
+
 Note: This tool is not really tested and might produce invalid GML/GV output. Use at your own risk!
+
+# Example
+
+The following definition ...
+
+```c
+struct {    
+    CredentialType credential_type;    
+    select (Credential.credential_type) {    
+        case basic:    
+            opaque identity<V>;    
+    
+        case x509:    
+            Certificate chain<V>;    
+    };    
+} Credential;
+```
+
+... is parsed into ...
+
+```rust
+Struct(
+    Struct {
+        name: "Credential",
+        items: [
+            Field(
+                Field {
+                    type: "CredentialType",
+                    name: "credential_type",
+                    range: None,
+                    optional: false,
+                    default: None,
+                },
+            ),
+            Select(
+                Select {
+                    over: "Credential.credential_type",
+                    cases: [
+                        Case {
+                            left: "basic",
+                            right: Fields(
+                                [
+                                    Field {
+                                        type: "opaque",
+                                        name: "identity",
+                                        range: Some(
+                                            Variable,
+                                        ),
+                                        optional: false,
+                                        default: None,
+                                    },
+                                ],
+                            ),
+                        },
+// ...
+                    ],
+                },
+            ),
+        ],
+    },
+)
+```
 
 ## License
 
