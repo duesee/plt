@@ -18,9 +18,8 @@ cargo run -- assets/draft-ietf-mls-protocol.tls
 
 ... and using a GML viewer such as [yEd]. (Don't forget to apply an auto-layout.)
 
-But it already parses all of MLS' syntax.
-
-Note: This tool is not really tested and might produce invalid GML/GV output. Use at your own risk!
+> [!WARNING]
+> This tool is not thoroughly tested and might produce invalid GML/GV output. Use at your own risk!
 
 # Example
 
